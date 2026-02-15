@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "s67070009",
+    "password": "UAC99XOE68V",
+    "database": "s67070009",
+    "host": "webdev.it.kmitl.ac.th",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
