@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="banner">
+        <div class="darker"></div>
+        <img src="img/info-bg.jpg">
+    </div>
+    <div class="card">
+        <div class="l">
+            <img src="img/info-bg.jpg">
+        </div>
+        <div class="r">
+            <h1>Login</h1>
+            <form class="form" action="/login" method="POST">
+                <div class="formitem">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="formitem">
+                    <label for="username">Password:</label>
+                    <input type="password" name="password" required>
+                </div>
+                
+                
+                <input id="submit" type="submit" value="Log In">
+        </div>
+    </div>
+</body>
+
+</html>

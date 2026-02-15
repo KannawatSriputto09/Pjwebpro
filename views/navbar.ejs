@@ -1,0 +1,22 @@
+<div class="navbar">
+    <div class="logo">
+        <img src="/img/logo-test.svg" alt="Logo">
+    </div>
+    <div class="nav-tab">
+        <div class="user">
+            <div class="user-info">
+                <div class="name"><%= user.email %></div>
+                <div class="id"><%= user.account_id %></div>
+            </div>
+            <div class="profile-pic"></div>
+        </div>
+        <div class="menu">
+            <button class="logout">Logout</button>
+            <button class="normal">ตารางสอน</button>
+            <button class="normal">ตารางสอบ</button>
+            <button class="normal"><a href="/scorestu/<%= user.account_id %>">ข้อมูลคะแนนเก็บ</a></button>
+            <button class="normal"><a href="/infostu/<%= user.account_id %>">ข้อมูลส่วนตัว</a></button>
+            <button class="normal">◄ กลับหน้าหลัก</button>
+        </div>
+    </div>
+</div>

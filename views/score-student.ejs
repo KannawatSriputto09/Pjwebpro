@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/reg-student-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<script>
+    function openOverlay() {
+        document.getElementById("passwordOverlay").style.display = "flex";
+    }
+
+    function closeOverlay() {
+        document.getElementById("passwordOverlay").style.display = "none";
+    }
+
+    function closeIfOutside(event) {
+        if (event.target.classList.contains("overlay")) {
+            closeOverlay();
+        }
+    }
+</script>
+
+<body>
+    <%- include("navbar") %>
+    <div class="banner">
+        <div class="text">
+            <h1>ข้อมูลคะแนนเก็บ</h1>
+            <h2>Student Information Office of the Registrar</h2>
+        </div>
+
+        <div class="darker"></div>
+        <img src="/img/info-bg.jpg">
+
+    </div>
+    <div class="profile-section">
+        <div class="pfp-container">
+            <div class="profile-left">
+                <div class="profile-image"></div>
+                <button class="edit-btn">Edit Image</button>
+            </div>
+
+            <div class="profile-right">
+                <div class="info-row"><span>ชื่อ (ไทย) :</span> นายจอช ซัมติง</div>
+                <div class="info-row"><span>ชื่อ (อังกฤษ) :</span> Mr. Josh something</div>
+                <div class="info-row"><span>รหัสนักเรียน :</span> 24457</div>
+                <div class="info-row"><span>ภาควิชา :</span> วิทย์-คณิต</div>
+                <div class="info-row"><span>Email :</span> josh@gmail1953.com</div>
+                <button class="pass-btn" onclick="openOverlay()">Change Password</button>
+                <div class="info-row"><span>เพศ :</span> ชาย</div>
+                <div class="info-row"><span>เบอร์โทรศัพท์ :</span> -</div>
+                <div class="info-row"><span>DOB :</span> 20 Jan. 1953</div>
+                <div class="info-row"><span>สัญชาติ :</span> United States</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
