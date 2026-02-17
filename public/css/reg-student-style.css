@@ -60,6 +60,31 @@ body {
     margin-right: 20px;
 }
 
+.score-con {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.score-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.score-table th {
+    background: #3b8edb;
+    color: white;
+    padding: 12px;
+    font-weight: 500;
+}
+
+.score-table td {
+    padding: 12px;
+    font-weight: 500;
+    text-align: center
+}
+
 .id {
     font-weight: 100;
     margin-right: 20px;
@@ -287,16 +312,21 @@ body {
     width: 400px;
     padding: 40px;
     border-radius: 8px;
+}
 
+.box form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
-.box h2 {
+.box form h2 {
     margin: 0;
     font-weight: 500;
 }
 
-.box input {
+.box form input {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #3b8edb;
