@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
   Students.associate = (models) => {
     Students.belongsTo(models.Accounts, { foreignKey: "account_id" });
     Students.hasMany(models.Enrollments, { foreignKey: "student_code" });
+    
   };
 
   return Students;
