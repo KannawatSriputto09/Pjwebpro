@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule</title>
+    <link rel="stylesheet" href="/css/test.css">
+</head>
+
+<body>
+
+    <%- include("navbar-staff") %>
+
+        
+    <h2>ตารางสอน</h2>
+
+<% 
+const days = ["Mon","Tue","Wed","Thu","Fri"]; 
+const dayLabel = { 
+    Mon: "จันทร์",
+    Tue: "อังคาร",
+    Wed: "พุธ",
+    Thu: "พฤหัสบดี",
+    Fri: "ศุกร์"
+};
+
+const timeSlots = [
+    "08:00","09:00","10:00","11:00",
+    "12:00","13:00","14:00","15:00","16:00"
+];
+
+const sections = [...new Set(schedules.map(s => s.section))];
+%>
+
+<% sections.forEach(sec => { %>
+
+    <h3>Section <%= sec %></h3>
+
+    <table class="schedule-table">
+        <thead>
+            <tr>
+                <th>วัน / เวลา</th>
+                <% for(let i = 0; i < timeSlots.length - 1; i++){ %>
+                    <th>
+                        <%= timeSlots[i] %> - <%= timeSlots[i+1] %>
+                    </th>
+                <% } %>
+            </tr>
+        </thead>
+
+        <tbody>
+        <% days.forEach(day => { %>
+            <tr>
+                <td><%= dayLabel[day] %></td>
+
+                <% for(let i = 0; i < timeSlots.length - 1; i++){ 
+                    const time = timeSlots[i];
+                %>
+
+                <td>
+                    <% schedules.forEach(s => {
+
+                        if(s.section === sec &&
+                           s.day_of_week === day &&
+                           s.start_time.substring(0,5) <= time &&
+                           s.end_time.substring(0,5) > time){
+                    %>
+
+                        <b><%= s.Subject.subject_name %></b><br>
+                        ห้อง <%= s.Subject.Classroom.classroom_name %>
+
+                    <% } }); %>
+                </td>
+
+                <% } %>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+
+    <br><br>
+
+<% }) %>
+
+</body>
+
+</html>
