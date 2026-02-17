@@ -61,6 +61,9 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "subject_id",
       otherKey: "teacher_id",
     });
+    Subject.hasMany(models.SubjectSchedule, {
+      foreignKey: "subject_id",
+    });
   };
   
   return Subject;
