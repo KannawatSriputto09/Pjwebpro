@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/add-stu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<script>
+    function openOverlay() {
+        document.getElementById("passwordOverlay").style.display = "flex";
+    }
+
+    function closeOverlay() {
+        document.getElementById("passwordOverlay").style.display = "none";
+    }
+
+    function closeIfOutside(event) {
+        if (event.target.classList.contains("overlay")) {
+            closeOverlay();
+        }
+    }
+
+    function openEditModal(id, fname, lname, email, phone) {
+  document.getElementById('student_id').value = id;
+  document.getElementById('fname').value = fname;
+  document.getElementById('lname').value = lname;
+  document.getElementById('email').value = email;
+  document.getElementById('phone').value = phone;
+
+  document.getElementById('editForm').action = "/edit-student/" + id;
+
+  document.getElementById('editOverlay').style.display = "block";
+}
+
+function closeEdit() {
+  document.getElementById('editOverlay').style.display = "none";
+}
+</script>
+<!-- CHANGE PASSWORD OVERLAY -->
+<div class="overlay" id="passwordOverlay" onclick="closeIfOutside(event)">
+    <div class="box">
+        <button class="close-btn" onclick="closeOverlay()">✕</button>
+        <h2>Change Password</h2>
+        <form class="form" action="/addstudent/<%= user.account_id %>"" method="POST">
+            <label for="fname">ชื่อ</label>
+            <input type="text" name="fname">
+            <label for="lname">นามสกุล</label>
+            <input type="text" name="lname">
+            <label for="stucode">รหัสนักเรียน</label>
+            <input type="text" name="stucode">
+            <label for="email">อีเมล</label>
+            <input type="text" name="email">
+            <label for="password">รหัสผ่าน</label>
+            <input type="text" name="password">
+            <label>เพศ</label>
+            <select name="gender">
+                <option value="male">male</option>
+                <option value="female">female</option>
+            </select>
+            <label for="dob">วันเกิด</label>
+            <input type="date" name="dob">
+            <label for="phone">เบอร์โทรศัพท์</label>
+            <input type="text" name="phone">
+            <input type="submit" name="submit" id="submit" value="เพิ่มนักเรียน">
+        </form>
+    </div>
+</div>
+
+<div class="overlay" id="editOverlay" style="display:none;">
+  <div class="box">
+    <button class="close-btn" onclick="closeEdit()">✕</button>
+    <h2>แก้ไขข้อมูลนักเรียน</h2>
+
+    <form id="editForm" method="POST">
+      <input type="hidden" name="student_id" id="student_id">
+
+      <label>ชื่อ</label>
+      <input type="text" name="fname" id="fname">
+
+      <label>นามสกุล</label>
+      <input type="text" name="lname" id="lname">
+
+      <label>อีเมล</label>
+      <input type="text" name="email" id="email">
+
+      <label>เบอร์โทร</label>
+      <input type="text" name="phone" id="phone">
+
+      <button type="submit">บันทึก</button>
+    </form>
+  </div>
+</div>
+<body>
+    <%- include("navbar-staff") %>
+
+        <div class="score-con">
+            
+            <table class="score-table">
+                <tr>
+                    <th>ชื่อ-นามสกุล</th>
+                    <th>รหัสนักเรียน</th>
+                    <th>อีเมล</th>
+                    <th>เพศ</th>
+                    <th>วันเกิด</th>
+                    <th>เบอร์โทรศัพท์</th>
+                    <th class="btn-th"><button class="btn" onclick="openOverlay()">+</button></th>
+                </tr>
+                <% students.forEach(item => { %>
+                <tr>
+                    <td><%= item.PersonalDatum.first_name %> <%= item.PersonalDatum.last_name %></td>
+                    <td><%= item.student_code %></td>
+                    <td><%= item.Account.email %></td>
+                    <td><%= item.PersonalDatum.gender %></td>
+                    <td><%= item.PersonalDatum.date_of_birth %></td>
+                    <td><%= item.PersonalDatum.telephone %></td>
+                    <td>
+  <button onclick="openEditModal(
+    '<%= item.student_id %>',
+    '<%= item.PersonalDatum.first_name %>',
+    '<%= item.PersonalDatum.last_name %>',
+    '<%= item.Account.email %>',
+    '<%= item.PersonalDatum.telephone %>'
+  )">
+    แก้ไขข้อมูล
+  </button>
+</td>
+
+                </tr>
+            <% }) %>
+
+            </table>
+        </div>
+</body>
+
+</html>
