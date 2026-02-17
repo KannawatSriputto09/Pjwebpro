@@ -5,15 +5,15 @@
     <div class="nav-tab">
         <div class="user">
             <div class="user-info">
-                <div class="name"><%= user.email %></div>
-                <div class="id"><%= user.account_id %></div>
+                <div class="name"><%=pd.first_name%> <%=pd.last_name%> (<%=user.role %>)</div>
+                <div class="id"><%= sc.student_code %></div>
             </div>
             <div class="profile-pic"></div>
         </div>
         <div class="menu">
             <button class="logout">Logout</button>
-            <button class="normal">ตารางสอน</button>
-            <button class="normal">ตารางสอบ</button>
+            <button class="normal"><a href="/subject-scd/<%= user.account_id %>">ตารางสอน</a></button>
+            <button class="normal"><a href="/exam-scd/<%= user.account_id %>">ตารางสอบ</a></button>
             <button class="normal"><a href="/scorestu/<%= user.account_id %>">ข้อมูลคะแนนเก็บ</a></button>
             <button class="normal"><a href="/infostu/<%= user.account_id %>">ข้อมูลส่วนตัว</a></button>
             <button class="normal">◄ กลับหน้าหลัก</button>
