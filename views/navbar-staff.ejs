@@ -1,0 +1,22 @@
+<div class="navbar">
+    <div class="logo">
+        <img src="/img/logo-test.svg" alt="Logo">
+    </div>
+    <div class="nav-tab">
+        <div class="user">
+            <div class="user-info">
+                <div class="name"><%=pd.first_name%> <%=pd.last_name%> (<%=user.role %>)</div>
+                <div class="id"><%= reg.admin_code %></div>
+            </div>
+            <div class="profile-pic"></div>
+        </div>
+        <div class="menu">
+            <button class="logout">Logout</button>
+            <button class="normal"><a href="/add-subject-scd/<%= user.account_id %>">แก้ไขตารางสอน</a></button>
+            <button class="normal">แก้ไขตารางสอบ</button>
+            <button class="normal"><a href="/add-student/<%= user.account_id %>">เพิ่มนักเรียน</a></button>
+            <button class="normal"><a href="/add-teacher/<%= user.account_id %>">เพิ่มคุณครู</a></button>
+            <button class="normal">◄ กลับหน้าหลัก</button>
+        </div>
+    </div>
+</div>
