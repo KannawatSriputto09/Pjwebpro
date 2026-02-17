@@ -27,10 +27,12 @@
     <div class="box">
         <button class="close-btn" onclick="closeOverlay()">✕</button>
         <h2>Change Password</h2>
-        <input type="password" placeholder="Old Password">
-        <input type="password" placeholder="New Password">
-        <input type="password" placeholder="Confirm Password">
-        <button class="change-btn">Change Password</button>
+        <form class="ch" action="/changepass/<%= user.account_id %>" method="POST">
+            <input type="password" placeholder="Old Password" name="opass">
+            <input type="password" placeholder="New Password" name="npass">
+            <input type="password" placeholder="Confirm Password" name="cnpass">
+            <button type="submit" class="change-btn">Change Password</button>
+        </form>
     </div>
 </div>
 <!-- CHANGE PASSWORD OVERLAY -->
@@ -49,19 +51,31 @@
     <div class="profile-section">
         <div class="pfp-container">
             <div class="profile-left">
-                <div class="profile-image"></div>
+                <div class="profile-image">
+                    <img src="" alt="">
+                </div>
                 <button class="edit-btn">Edit Image</button>
             </div>
 
             <div class="profile-right">
-                <div class="info-row"><span>ชื่อ (ไทย) :</span><%=user.email%></div>
+                <div class="info-row"><span>ชื่อ (ไทย) :</span><%=pd.first_name%> <%=pd.last_name%></div>
                 <div class="info-row"><span>ชื่อ (อังกฤษ) :</span> Mr. Josh something</div>
-                <div class="info-row"><span>รหัสนักเรียน :</span> 24457</div>
+                <div class="info-row"><span>รหัสนักเรียน :</span> <%= sc.student_code %></div>
                 <div class="info-row"><span>ภาควิชา :</span> วิทย์-คณิต</div>
-                <div class="info-row"><span>Email :</span> josh@gmail1953.com</div>
+                <div class="info-row"><span>Email :</span> <%= sc.email %></div>
+                <div class="info-row"><span>รหัสผ่าน :</span> <%= user.password_hash%></div>
                 <button class="pass-btn" onclick="openOverlay()">Change Password</button>
-                <div class="info-row"><span>เพศ :</span> ชาย</div>
-                <div class="info-row"><span>เบอร์โทรศัพท์ :</span> -</div>
+                <% if (pd.gender == 'male') { %>
+                    <div class="info-row"><span>เพศ :</span> ชาย</div>
+                <%} else {%>
+                    <div class="info-row"><span>เพศ :</span> หญิง</div>
+                <%}%>
+
+                <% if (pd.telephone) { %>
+                    <div class="info-row"><span>เบอร์โทรศัพท์ :</span> <%=pd.telephone %></div>
+                <%} else {%>
+                    <div class="info-row"><span>เบอร์โทรศัพท์ :</span> -</div>
+                <%}%>
                 <div class="info-row"><span>DOB :</span> 20 Jan. 1953</div>
                 <div class="info-row"><span>สัญชาติ :</span> United States</div>
             </div>
