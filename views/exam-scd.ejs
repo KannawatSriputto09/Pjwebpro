@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/reg-student-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include("navbar") %>
+    <div class="con">
+
+        <h1 class="title">ตารางสอบ</h1>
+
+        <div class="score-con">
+            <table class="score-table">
+                <thead>
+                    <tr>
+                        <th>รหัสวิชา</th>
+                        <th>ชื่อวิชา</th>
+                        <th>เวลา</th>
+                        <th>ห้อง</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <% data.forEach(item => { %>
+                    <tbody>
+                        
+                    </tbody>
+                <% }) %>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
